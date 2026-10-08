@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Progress Stopwatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Circular Stopwatch</h1>
+        
+        <div class="circles-container">
+            <div class="circle">
+                <svg>
+                    <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+                    <circle class="circle-progress hours-progress" cx="60" cy="60" r="52" 
+                            stroke-dasharray="0 327" id="hours-circle"></circle>
+                </svg>
+                <div class="circle-content">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+            </div>
+            
+            <div class="circle">
+                <svg>
+                    <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+                    <circle class="circle-progress minutes-progress" cx="60" cy="60" r="52" 
+                            stroke-dasharray="0 327" id="minutes-circle"></circle>
+                </svg>
+                <div class="circle-content">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+            </div>
+            
+            <div class="circle">
+                <svg>
+                    <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+                    <circle class="circle-progress seconds-progress" cx="60" cy="60" r="52" 
+                            stroke-dasharray="0 327" id="seconds-circle"></circle>
+                </svg>
+                <div class="circle-content">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="start-btn" id="startBtn">Start</button>
+            <button class="stop-btn" id="stopBtn" disabled>Stop</button>
+            <button class="lap-btn" id="lapBtn" disabled>Lap</button>
+            <button class="reset-btn" id="resetBtn">Reset</button>
+        </div>
+        
+        <div class="laps-container" id="lapsContainer" style="display: none;">
+            <div class="laps-title">Lap Times</div>
+            <div class="lap-list" id="lapList"></div>
+        </div>
+    </div>
+
+</body>
+</html>

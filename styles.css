@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #ffffff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    background: linear-gradient(45deg, #00d4ff, #0099cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.circles-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.1s ease;
+}
+
+.hours-progress {
+    stroke: #ff6b6b;
+}
+
+.minutes-progress {
+    stroke: #4ecdc4;
+}
+
+.seconds-progress {
+    stroke: #45b7d1;
+}
+
+.circle-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.time-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.8em;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+button {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.start-btn {
+    background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+}
+
+.stop-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+}
+
+.reset-btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.lap-btn {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+.laps-container {
+    margin-top: 30px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.laps-title {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #00d4ff;
+}
+
+.lap-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.lap-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border-left: 3px solid #00d4ff;
+}
+
+.lap-number {
+    font-weight: bold;
+    color: #00d4ff;
+}
+
+.lap-time {
+    font-family: "Courier New", monospace;
+}
+
+@media (max-width: 768px) {
+    .circles-container {
+        gap: 20px;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .time-value {
+        font-size: 1.4em;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    button {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+}
