@@ -1,218 +1,119 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: #ffffff;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 0%, #1b2436, #0b0f18 70%);
+  font-family: "Segoe UI", Roboto, system-ui, sans-serif;
+  color: #e6ecf5;
 }
 
-.container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+.app { width: min(520px, 92vw); padding: 32px 24px; text-align: center; }
 
 h1 {
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    background: linear-gradient(45deg, #00d4ff, #0099cc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  margin: 0 0 28px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #93a2bb;
 }
 
-.circles-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 40px 0;
-    flex-wrap: wrap;
+
+.circles { display: flex; justify-content: center; gap: 18px; margin-bottom: 38px; }
+
+.circle-block { position: relative; width: 132px; height: 132px; }
+
+
+.progress-ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+
+.ring-bg,
+.ring-progress { fill: none; stroke-width: 8; }
+
+.ring-bg { stroke: #1e2735; }
+
+.ring-progress {
+  stroke-linecap: round;
+  transition: stroke-dasharray .35s linear;
 }
 
-.circle {
-    position: relative;
-    width: 120px;
-    height: 120px;
+#hours-circle   { stroke: #8b5cf6; }
+#minutes-circle { stroke: #22d3ee; }
+#seconds-circle { stroke: #f472b6; }
+
+.circle-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-.circle svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
+.circle-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #6b7b93;
 }
 
-.circle-bg {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.1);
-    stroke-width: 8;
-}
 
-.circle-progress {
-    fill: none;
-    stroke-width: 8;
-    stroke-linecap: round;
-    transition: stroke-dasharray 0.1s ease;
-}
-
-.hours-progress {
-    stroke: #ff6b6b;
-}
-
-.minutes-progress {
-    stroke: #4ecdc4;
-}
-
-.seconds-progress {
-    stroke: #45b7d1;
-}
-
-.circle-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.time-value {
-    font-size: 1.8em;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.time-label {
-    font-size: 0.8em;
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.controls {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin: 30px 0;
-    flex-wrap: wrap;
-}
+.controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
 button {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  min-width: 92px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #2a3547;
+  background: #18202e;
+  color: #e6ecf5;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .15s, opacity .2s;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+button:hover:not(:disabled) { transform: translateY(-1px); }
+
+button:disabled { opacity: .3; cursor: not-allowed; }
+
+#startBtn:not(:disabled) { background: linear-gradient(135deg, #22c55e, #16a34a); border-color: #22c55e; }
+#stopBtn:not(:disabled)  { background: linear-gradient(135deg, #ef4444, #dc2626); border-color: #ef4444; }
+#lapBtn:not(:disabled)   { background: linear-gradient(135deg, #3b82f6, #2563eb); border-color: #3b82f6; }
+
+
+.laps { margin-top: 32px; text-align: left; }
+
+.laps h2 {
+  margin: 0 0 12px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #6b7b93;
 }
 
-button:active {
-    transform: translateY(0);
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.start-btn {
-    background: linear-gradient(45deg, #56ab2f, #a8e6cf);
-}
-
-.stop-btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-}
-
-.reset-btn {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-}
-
-.lap-btn {
-    background: linear-gradient(45deg, #f093fb, #f5576c);
-}
-
-.laps-container {
-    margin-top: 30px;
-    max-width: 400px;
-    width: 100%;
-}
-
-.laps-title {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    color: #00d4ff;
-}
-
-.lap-list {
-    max-height: 200px;
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 10px;
-}
+#lapList { max-height: 240px; overflow-y: auto; }
 
 .lap-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 12px;
-    margin: 5px 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    border-left: 3px solid #00d4ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border: 1px solid #202b3b;
+  border-radius: 10px;
+  background: #141b27;
 }
 
-.lap-number {
-    font-weight: bold;
-    color: #00d4ff;
-}
+.lap-number { font-size: 14px; color: #8b98ad; }
 
-.lap-time {
-    font-family: "Courier New", monospace;
-}
-
-@media (max-width: 768px) {
-    .circles-container {
-        gap: 20px;
-    }
-
-    .circle {
-        width: 100px;
-        height: 100px;
-    }
-
-    .time-value {
-        font-size: 1.4em;
-    }
-
-    .controls {
-        gap: 10px;
-    }
-
-    button {
-        padding: 10px 18px;
-        font-size: 0.9em;
-    }
-}
+.lap-time { font-variant-numeric: tabular-nums; font-weight: 600; }
